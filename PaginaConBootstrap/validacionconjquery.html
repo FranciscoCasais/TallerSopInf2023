@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <title>Formulario de Geografía</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img alt="logo" src="/home/andreachi-casais/Documentos/TallerSopInf2023/PaginaConBootstrap/Imagenes/planetatierra.jpg" width="30" height="30"/> 
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="principal">Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ayuda">Ayuda</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container text-center" id="contenedor">
+            <h1>Formulario de Geografía</h1>
+            <form class="row g-3 needs-validation" novalidate>
+                <br>
+                <h5>¿Cuál es la capital de Canadá?</h5>
+                <label><input name="pregunta1" type="radio"> Vancouver</label>
+                <br>
+                <label><input name="pregunta1" type="radio"> Toronto</label>
+                <br>
+                <label><input name="pregunta1" type="radio"> Ottawa</label>
+                <br>
+                <label><input name="pregunta1" type="radio"> Montreal</label>
+                <br>
+                <br>
+                <h5>¿En qué continente está Argelia?</h5>
+                <label><input name="pregunta2" type="radio"> África</label>
+                <br>
+                <label><input name="pregunta2" type="radio"> Europa</label>
+                <br>
+                <label><input name="pregunta2" type="radio"> Oceanía</label>
+                <br>
+                <label><input name="pregunta2" type="radio"> Asia</label>
+                <br>
+                <br>
+                <h5>¿Cuál es el país más poblado del mundo?</h5>
+                <label><input name="pregunta3" type="radio"> Nigeria</label>
+                <br>
+                <label><input name="pregunta3" type="radio"> China</label>
+                <br>
+                <label><input name="pregunta3" type="radio"> Indonesia</label>
+                <br>
+                <label><input name="pregunta3" type="radio"> India</label>
+                <br>
+                <br>
+                <h5>¿Cuántas provincias tiene Argentina?</h5>
+                <label><input name="pregunta4" type="radio"> 22</label>
+                <br>
+                <label><input name="pregunta4" type="radio"> 23</label>
+                <br>
+                <label><input name="pregunta4" type="radio"> 24</label>
+                <br>
+                <label><input name="pregunta4" type="radio"> 25</label>
+                <br>
+                <br>
+                <h5>¿Cuál de estos países es el más pequeño?</h5>
+                <label><input name="pregunta5" type="radio"> Luxemburgo</label>
+                <br>
+                <label><input name="pregunta5" type="radio"> San Marino</label>
+                <br>
+                <label><input name="pregunta5" type="radio"> Islas Marshall</label>
+                <br>
+                <label><input name="pregunta5" type="radio"> Nauru</label>
+                <br>
+                <br>
+                <h5>Mandanos tus datos</h5>
+                <div class="row" id="ingresarDatos">
+                    <div class="col-md-4">
+                        <label class="form-label">Nombre/s: <input class="form-control" id="nombre" type="text" required></label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Apellido/s: <input class="form-control" id="apellido" type="text" required></label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">E-mail: <input class="form-control" id="email" type="email"required></label>
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary" id="botonEnviar" onclick="validarDatos(event)" type="submit">Enviar</button>
+            </form>
+        </div>
+        <script>
+            function numeroEncontrado(caracter) {
+                var numeros="1234567890";
+                for(var i=0;i<numeros.length;i++) {
+                    if(caracter==numeros[i]) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            function validarNombre(cadena) {
+                for(var i=0;i<cadena.length;i++) {
+                    if(numeroEncontrado(cadena[i])) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+            function validarDatos(event) {
+                event.preventDefault();
+                if(validarNombre($("#nombre").value)) {
+                    $("#nombre").removeClass("is-invalid");
+                    $("#nombre").addClass("is-valid");
+                } else {
+                    $("#nombre").addClass("is-invalid");
+                }
+                if(validarNombre($("#apellido").value)) {
+                    $("#apellido").removeClass("is-invalid");
+                    $("#apellido").addClass("is-valid");
+                } else {
+                    $("#apellido").addClass("is-invalid");
+                }
+                var cantidadArrobas=0,espacioDetectado;
+                for(var i=0;i<$("#email").value.length;i++) {
+                    if($("#email").value[i]==' ') {
+                        espacioDetectado=true;
+                    }
+                    else if($("#email").value[i]=='@') {
+                        cantidadArrobas++;
+                    }
+                }
+                if(cantidadArrobas!=1 || espacioDetectado) {
+                    $("#apellido").addClass("is-invalid");
+                    espacioDetectado=false;
+                } else {
+                    $("#email").removeClass("is-invalid");
+                    $("#email").addClass("is-valid");
+                }
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <style>
+            #botonEnviar {
+                margin-bottom: 5%;
+            }
+            #contenedor {
+                margin-top: 2%;
+            }
+            #ingresarDatos {
+                margin-top: 2%;
+            }
+        </style>
+    </body>
+</html>
