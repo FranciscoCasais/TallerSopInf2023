@@ -119,24 +119,24 @@
             }
             function validarDatos(event) {
                 event.preventDefault();
-                if(validarNombre($("#nombre").value)) {
+                if(validarNombre($("#nombre").val)) {
                     $("#nombre").removeClass("is-invalid");
                     $("#nombre").addClass("is-valid");
                 } else {
                     $("#nombre").addClass("is-invalid");
                 }
-                if(validarNombre($("#apellido").value)) {
+                if(validarNombre($("#apellido").val)) {
                     $("#apellido").removeClass("is-invalid");
                     $("#apellido").addClass("is-valid");
                 } else {
                     $("#apellido").addClass("is-invalid");
                 }
                 var cantidadArrobas=0,espacioDetectado;
-                for(var i=0;i<$("#email").value.length;i++) {
-                    if($("#email").value[i]==' ') {
+                for(var i=0;i<$("#email").val.length;i++) {
+                    if($("#email").val[i]==' ') {
                         espacioDetectado=true;
                     }
-                    else if($("#email").value[i]=='@') {
+                    else if($("#email").val[i]=='@') {
                         cantidadArrobas++;
                     }
                 }
