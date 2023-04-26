@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <script type="text/JAVASCRIPT" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <title>Carrusel de imágenes</title>
+    </head>
+    <body>
+        <div id="principal">
+            <h1>Carrusel de imágenes</h1>
+            <ul id="carrusel">
+                <li>
+                    <img alt="Primera imagen" src="/home/andreachi-casais/Documentos/TallerSopInf2023/PaginaConBootstrap/Imagenes/mrincreiblefase1.jpg">
+                </li>
+                <li>
+                    <img alt="Segunda imagen" src="/home/andreachi-casais/Documentos/TallerSopInf2023/PaginaConBootstrap/Imagenes/mrincreiblefase2.jpg">
+                </li>
+                <li>
+                    <img alt="Tercera imagen" src="/home/andreachi-casais/Documentos/TallerSopInf2023/PaginaConBootstrap/Imagenes/mrincreiblefase3.jpg">
+                </li>
+            </ul>
+        </div>
+        <script>
+            $(document).ready(function() {
+                setInterval(function() {
+                    var primeraImagen=$("ul#carrusel").find("li").eq(0);
+                    $(primeraImagen).fadeIn(1500).fadeOut(1500);
+                    $("ul#carrusel").append($(primeraImagen));
+                },3000);
+            });
+        </script>
+        <style>
+            h1 { text-align: center; }
+            #carrusel li {
+                display: none;
+                height: 400px;
+                width: 500px;
+            }
+            #carrusel li img {
+                height: 400px;
+                width: 500px;
+            }
+            #principal {
+                margin: 40px auto;
+                width: 540px;
+            }
+        </style>
+    </body>
+</html>
