@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <title>Carrusel de imágenes</title>
+    </head>
+    <body>
+        <div id="principal">
+            <h1>Carrusel de imágenes</h1>
+            <div id="exteriorCarrusel">
+                <div id="interiorCarrusel">
+                    <img alt="Primera imagen" class="activa" id="primeraImagen" src="./Imagenes/mrincreiblefase1.jpg">
+                    <img alt="Segunda imagen" id="segundaImagen" src="./Imagenes/mrincreiblefase2.jpg">
+                    <img alt="Tercera imagen" id="terceraImagen" src="./Imagenes/mrincreiblefase3.jpg">
+                </div>
+                <button class="botonCarrusel" onclick="cambiarImagen(-1)" type="button">Anterior</button>
+                <button class="botonCarrusel" onclick="cambiarImagen(1)" type="button">Siguiente</button>
+            </div>
+        </div>
+        <script>
+            function cambiarImagen(numero) {
+                var numeroImagen;
+                if($("#primeraImagen").hasClass("activa")) {
+                    numeroImagen=1+numero;
+                    $("#primeraImagen").removeClass("activa");
+                }
+                else if($("#segundaImagen").hasClass("activa")) {
+                    numeroImagen=2+numero;
+                    $("#segundaImagen").removeClass("activa");
+                }
+                else {
+                    numeroImagen=3+numero;
+                    $("#terceraImagen").removeClass("activa");
+                }
+                if(numeroImagen<1) { numeroImagen=3; }
+                else if(numeroImagen>3) { numeroImagen=1; }
+                switch(numeroImagen) {
+                    case 1:
+                        $("#primeraImagen").addClass("activa");
+                        break;
+                    case 2:
+                        $("#segundaImagen").addClass("activa");
+                        break;
+                    case 3:
+                        $("#terceraImagen").addClass("activa");
+                        break;
+                }
+            }
+        </script>
+        <style>
+            h1 { text-align: center; }
+            .botonCarrusel {
+                cursor: pointer;
+                margin-top: 50px;
+            }
+            #interiorCarrusel {
+                height: 400px;
+                width: 500px;
+            }
+            #interiorCarrusel img {
+                display: none;
+                height: 400px;
+                width: 500px;
+            }
+            #interiorCarrusel img.activa { display: inline-block; }
+            #principal {
+                margin: 40px auto;
+                width: 540px;
+            }
+        </style>
+    </body>
+</html>
