@@ -142,10 +142,15 @@
                     document.getElementById("email").classList.add("is-valid");
                 }
                 var datos={
-                    nombre: document.getElementById("nombre"),
-                    apellido: document.getElementById("apellido"),
-                    email: document.getElementById("email")
+                    nombre: document.getElementById("nombre").value,
+                    apellido: document.getElementById("apellido").value,
+                    email: document.getElementById("email").value
                 };
+                fetch('/insertardatos',{
+                    method : 'POST',
+                    body : JSON.stringify(datos),
+                    headers : {"Content-Type": "application/json"}
+                });
             }
         </script>
         <style>
