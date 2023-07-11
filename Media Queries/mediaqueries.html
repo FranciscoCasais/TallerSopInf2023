@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <title>Media Queries</title>
+    </head>
+    <body>
+        <header>
+            <h1>Pajaros.com</h1>
+        </header>
+        <nav>
+            <a href="inicio">Inicio</a>
+            <a href="ayuda">Ayuda</a>
+            <a href="contacto">Contacto</a>
+        </nav>
+        <div id="principal">
+            <div id="exteriorCarrusel">
+                <div id="interiorCarrusel">
+                    <img alt="Primera imagen" class="activa" id="primeraImagen" src="./Imagenes/pajaroamarillo.jpg">
+                    <img alt="Segunda imagen" id="segundaImagen" src="./Imagenes/loros.jpg">
+                    <img alt="Tercera imagen" id="terceraImagen" src="./Imagenes/acepto.jpeg">
+                </div>
+                <button class="botonCarrusel" onclick="cambiarImagen(-1)" type="button">Anterior</button>
+                <button class="botonCarrusel" onclick="cambiarImagen(1)" type="button">Siguiente</button>
+            </div>
+            <div id="vertical">
+                <img alt="Primera imagen" class="activa" id="primeraImagen" src="./Imagenes/pajaroamarillo.jpg">
+                <img alt="Segunda imagen" id="segundaImagen" src="./Imagenes/loros.jpg">
+                <img alt="Tercera imagen" id="terceraImagen" src="./Imagenes/acepto.jpeg">
+            </div>
+        </div>
+        <script>
+            function cambiarImagen(numero) {
+                var numeroImagen;
+                if($("#primeraImagen").hasClass("activa")) {
+                    numeroImagen=1+numero;
+                    $("#primeraImagen").removeClass("activa");
+                }
+                else if($("#segundaImagen").hasClass("activa")) {
+                    numeroImagen=2+numero;
+                    $("#segundaImagen").removeClass("activa");
+                }
+                else {
+                    numeroImagen=3+numero;
+                    $("#terceraImagen").removeClass("activa");
+                }
+                if(numeroImagen<1) { numeroImagen=3; }
+                else if(numeroImagen>3) { numeroImagen=1; }
+                switch(numeroImagen) {
+                    case 1:
+                        $("#primeraImagen").addClass("activa");
+                        break;
+                    case 2:
+                        $("#segundaImagen").addClass("activa");
+                        break;
+                    case 3:
+                        $("#terceraImagen").addClass("activa");
+                        break;
+                }
+            }
+        </script>
+        <style>
+            h1 { text-align: center; }
+            .botonCarrusel {
+                cursor: pointer;
+                margin-top: 50px;
+            }
+            #interiorCarrusel {
+                height: 400px;
+                width: 500px;
+            }
+            #interiorCarrusel img {
+                display: none;
+                height: 400px;
+                width: 500px;
+            }
+            #interiorCarrusel img.activa { display: inline-block; }
+            #principal {
+                margin: 40px auto;
+                width: 540px;
+            }
+            #vertical img {
+                height: 250px;
+                width: 300px;
+            }
+            @media(device-width>=400) {
+                #vertical { display: none; }
+            }
+            @media(device-width<400) {
+                #exteriorCarrusel { display: none; }
+            }
+        </style>
+    </body>
+</html>
